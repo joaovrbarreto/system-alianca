@@ -1,4 +1,9 @@
 <?php
+session_start();
+if((!isset ($_SESSION['user_id']) == true) and (!isset ($_SESSION['user_name']) == true))
+	{
+		header('location:index.php');
+	}
 require_once 'config.php';
 require_once 'header.php';
 ?>
@@ -8,10 +13,9 @@ require_once 'header.php';
 		<a href="#" class="logo"><img src="img/logo@2x.png" class="img-responsive" alt=""></a>
 		<span class="menu-btn"><i class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
-			<li><a href="#">Ajuda</a></li>
-			<li><a href="#">Configurações</a></li>
+
 			<li class="ts-account">
-				<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt="">  <i class="fa fa-angle-down hidden-side"></i></a>
+				<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> <?php echo $_SESSION['user_name']; ?> <i class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
 					<li><a href="#">Minha Conta</a></li>
 					<li><a href="#">Editar Conta</a></li>
@@ -23,8 +27,11 @@ require_once 'header.php';
 	<div class="ts-main-content">
 		<nav class="ts-sidebar">
 			<ul class="ts-sidebar-menu">
+				<li class="ts-label"></li>
 				<li class="open"><a href="home.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 				<li><a href="service.php"><i class="fa fa-edit"></i>Cadastrar Serviço</a>
+				</li>
+				<li><a href="envia-email.php"><i class="fa fa-check"></i>Enviar E-mail</a>
 				</li>
 				<!-- Account from above -->
 				<ul class="ts-profile-nav">
@@ -49,18 +56,18 @@ require_once 'header.php';
 								<div class="panel panel-default">
 									<div class="panel-heading">Solicitação de Manutenção</div>
 									<div class="panel-body">
-										<form method="get" class="form-horizontal">
+										<form  action="#" method="POST" class="form-horizontal">
 											<div class="form-group">
 												<label class="col-sm-2 control-label">Nome do Requisitante</label>
 												<div class="col-sm-10">
-													<input type="text" class="form-control">
+													<input type="text" class="form-control" required>
 												</div>
 											</div>
 
 											<div class="form-group">
 												<label class="col-sm-2 control-label">Setor Requisitante</label>
 												<div class="col-sm-10">
-													<input type="text" class="form-control">
+													<input type="text" class="form-control" required>
 												</div>
 											</div>
 
@@ -72,7 +79,7 @@ require_once 'header.php';
 													
 												<label class="col-sm-2 control-label">Data</label>
 												<div class="col-sm-2">
-													<input type="text" id="date" class="form-control data data_02" data-date-language="pt-BR" placeholder="00/00/0000">
+													<input type="text" id="date" class="form-control data data_02" data-date-language="pt-BR" placeholder="00/00/0000" required>
 												</div>
 
 											</div>
@@ -80,7 +87,7 @@ require_once 'header.php';
 											<div class="form-group">
 												<label class="col-sm-2 control-label">Serviço a Executar</label>
 												<div class="col-sm-10">
-													<input type="text" class="form-control"><span class="help-block m-b-none">Informe aqui a descrição do serviço a ser realizado.</span> </div>
+													<input type="text" class="form-control" required><span class="help-block m-b-none">Informe aqui a descrição do serviço a ser realizado.</span> </div>
 											</div>
 											
 											<div class="row">
@@ -91,30 +98,30 @@ require_once 'header.php';
 											<div class="form-group">
 												<label class="col-sm-2 control-label">Diagnóstico</label>
 												<div class="col-sm-10">
-													<input type="text" class="form-control"><span class="help-block m-b-none">Informe aqui o diagnóstico identificado.</span> </div>
+													<input type="text" class="form-control" required><span class="help-block m-b-none">Informe aqui o diagnóstico identificado.</span> </div>
 											</div>
 
 											<div class="form-group">
 												<label class="col-sm-2 control-label">Serviço Executador por:</label>
 												<div class="col-sm-5">
-													<input type="text" class="form-control">
+													<input type="text" class="form-control" required>
 												</div>
 
 												<label class="col-sm-2 control-label">Data</label>
 												<div class="col-sm-2">
-													<input type="text" id="date" class="form-control data data_02" data-date-language="pt-BR" placeholder="00/00/0000">
+													<input type="text" id="date" class="form-control data data_02" data-date-language="pt-BR" placeholder="00/00/0000" required>
 												</div>
 											</div>
 
 											<div class="form-group">
 												<label class="col-sm-2 control-label">Serviço Recebido por:</label>
 												<div class="col-sm-5">
-													<input type="text" class="form-control">
+													<input type="text" class="form-control" required>
 												</div>
 
 												<label class="col-sm-2 control-label">Data</label>
 												<div class="col-sm-2">
-													<input type="text" id="date" class="form-control data data_02" data-date-language="pt-BR" placeholder="00/00/0000">
+													<input type="text" id="date" class="form-control data data_02" data-date-language="pt-BR" placeholder="00/00/0000" required>
 												</div>
 											</div>											
 

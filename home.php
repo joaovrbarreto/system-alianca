@@ -13,8 +13,7 @@ require_once 'header.php';
 		<a href="#" class="logo"><img src="img/logo@2x.png" class="img-responsive" alt=""></a>
 		<span class="menu-btn"><i class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
-			<li><a href="#">Ajuda</a></li>
-			<li><a href="#">Configurações</a></li>
+			
 			<li class="ts-account">
 				<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> <?php echo $_SESSION['user_name']; ?> <i class="fa fa-angle-down hidden-side"></i></a>
 				<ul>
@@ -37,8 +36,7 @@ require_once 'header.php';
 				</li>
 				<!-- Account from above -->
 				<ul class="ts-profile-nav">
-					<li><a href="#">Help</a></li>
-					<li><a href="#">Settings</a></li>
+					
 					<li class="ts-account">
 						<a href="#"><img src="img/ts-avatar.jpg" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
 						<ul>
